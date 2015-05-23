@@ -12,6 +12,8 @@ package empresa;
 public class Empleado {
     double salarioBruto;
     String cedula;
+    String nombres;
+    String apellidos;
     
     public void setSalarioBruto(double paSalarioBruto){
         salarioBruto = paSalarioBruto;
@@ -19,6 +21,9 @@ public class Empleado {
     
     public double getSalarioBruto(){
         return salarioBruto;
+    }
+    public String getIdEmpleado(){
+        return cedula;
     }
     
     public double calcularSalarioReal(){
