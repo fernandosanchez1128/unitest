@@ -10,10 +10,15 @@ package empresa;
  * @author family
  */
 public class Empleado {
-    double salarioBruto;
-    String cedula;
-    String nombres;
-    String apellidos;
+    private double salarioBruto;
+    private String cedula;
+    
+    public Empleado(){}
+    
+    public Empleado(String cedula, double salarioBruto){
+        this.cedula=cedula;
+        this.salarioBruto=salarioBruto;
+    }
     
     public void setSalarioBruto(double paSalarioBruto){
         salarioBruto = paSalarioBruto;
@@ -27,6 +32,6 @@ public class Empleado {
     }
     
     public double calcularSalarioReal(){
-        return salarioBruto*(1+0.8);
+        return salarioBruto*(1-0.08);
     }
 }
