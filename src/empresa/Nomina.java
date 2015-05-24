@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author JuanD
  */
 public class Nomina {
-    public double calcularSuedoBruto(Empleado objEmpleado){
+    public double calcularSueldoBruto(Empleado objEmpleado){
         double sueldoBruto=objEmpleado.getSalarioBruto();
         return sueldoBruto;
     }

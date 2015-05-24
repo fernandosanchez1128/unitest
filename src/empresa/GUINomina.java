@@ -5,6 +5,7 @@
  */
 package empresa;
 
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -77,12 +78,27 @@ public class GUINomina extends javax.swing.JFrame {
         jPanel1.add(jButton2);
 
         jButton3.setText("Suma de sueldos reales");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton3);
 
         jButton4.setText("Promedio de sueldos reales");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton4);
 
         jButton5.setText("Cedulas de los empleados");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton5);
 
         jButton6.setText("Total a pagar");
@@ -94,6 +110,11 @@ public class GUINomina extends javax.swing.JFrame {
         jPanel1.add(jButton6);
 
         jButton7.setText("Empleado que gana menos");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton7);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -117,7 +138,16 @@ public class GUINomina extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        
+        int num = Integer.parseInt(JOptionPane.showInputDialog(null, "¿Cuántos empleados desea ingresar?"));
+        Empleado[] emps = new Empleado[num];
+        for (int i = 0;i < num; i++){
+            String cedula = JOptionPane.showInputDialog(null, "¿Cuál es la cedula del empleado " +(i+1)+"?");
+            double sueldoBruto = Double.parseDouble(JOptionPane.showInputDialog(null, "¿Cuál es el sueldo en bruto del empleado " +(i+1)+"?"));
+            Empleado emp = new Empleado(cedula, sueldoBruto);
+            emps[i] = emp;
+        }
+        double suma = nomina.calcularTotalAPagar(emps);
+        JOptionPane.showMessageDialog(null, "El total a pagar por parte de la empresa es: "+suma);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -132,17 +162,16 @@ public class GUINomina extends javax.swing.JFrame {
         String cedula = JOptionPane.showInputDialog(null, "¿Cuál es la cedula del empleado?");
         double sueldoBruto = Double.parseDouble(JOptionPane.showInputDialog(null, "¿Cuál es el sueldo en bruto del empleado?"));
         Empleado emp = new Empleado(cedula, sueldoBruto);
-        double sueldoBrutoEmp = nomina.calcularSuedoBruto(emp);
+        double sueldoBrutoEmp = nomina.calcularSueldoBruto(emp);
         JOptionPane.showMessageDialog(null, "El sueldo en bruto del empleado es: "+sueldoBrutoEmp);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int seguir = 1;
         int num = Integer.parseInt(JOptionPane.showInputDialog(null, "¿Cuántos empleados desea ingresar?"));
         Empleado[] emps = new Empleado[num];
         for (int i = 0;i < num; i++){
-            String cedula = JOptionPane.showInputDialog(null, "¿Cuál es la cedula del empleado?");
-            double sueldoBruto = Double.parseDouble(JOptionPane.showInputDialog(null, "¿Cuál es el sueldo en bruto del empleado?"));
+            String cedula = JOptionPane.showInputDialog(null, "¿Cuál es la cedula del empleado " +(i+1)+"?");
+            double sueldoBruto = Double.parseDouble(JOptionPane.showInputDialog(null, "¿Cuál es el sueldo en bruto del empleado " +(i+1)+"?"));
             Empleado emp = new Empleado(cedula, sueldoBruto);
             emps[i] = emp;
         }
@@ -154,6 +183,62 @@ public class GUINomina extends javax.swing.JFrame {
         }
         JOptionPane.showMessageDialog(null, "El sueldo real de los empleados que ingresó es: "+resp);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int num = Integer.parseInt(JOptionPane.showInputDialog(null, "¿Cuántos empleados desea ingresar?"));
+        Empleado[] emps = new Empleado[num];
+        for (int i = 0;i < num; i++){
+            String cedula = JOptionPane.showInputDialog(null, "¿Cuál es la cedula del empleado " +(i+1)+"?");
+            double sueldoBruto = Double.parseDouble(JOptionPane.showInputDialog(null, "¿Cuál es el sueldo en bruto del empleado " +(i+1)+"?"));
+            Empleado emp = new Empleado(cedula, sueldoBruto);
+            emps[i] = emp;
+        }
+        double suma = nomina.calcularSumaSueldos(emps);
+        JOptionPane.showMessageDialog(null, "La suma de los sueldos reales de los empleados que ingresó es: "+suma);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int num = Integer.parseInt(JOptionPane.showInputDialog(null, "¿Cuántos empleados desea ingresar?"));
+        Empleado[] emps = new Empleado[num];
+        for (int i = 0;i < num; i++){
+            String cedula = JOptionPane.showInputDialog(null, "¿Cuál es la cedula del empleado " +(i+1)+"?");
+            double sueldoBruto = Double.parseDouble(JOptionPane.showInputDialog(null, "¿Cuál es el sueldo en bruto del empleado " +(i+1)+"?"));
+            Empleado emp = new Empleado(cedula, sueldoBruto);
+            emps[i] = emp;
+        }
+        double suma = nomina.calcularPromedioSueldos(emps);
+        JOptionPane.showMessageDialog(null, "El promedio de los sueldos reales de los empleados que ingresó es: "+suma);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        int num = Integer.parseInt(JOptionPane.showInputDialog(null, "¿Cuántos empleados desea ingresar?"));
+        Empleado[] emps = new Empleado[num];
+        for (int i = 0;i < num; i++){
+            String cedula = JOptionPane.showInputDialog(null, "¿Cuál es la cedula del empleado " +(i+1)+"?");
+            double sueldoBruto = Double.parseDouble(JOptionPane.showInputDialog(null, "¿Cuál es el sueldo en bruto del empleado " +(i+1)+"?"));
+            Empleado emp = new Empleado(cedula, sueldoBruto);
+            emps[i] = emp;
+        }
+        ArrayList <String> ceds = nomina.obtenerIdEmpleados(emps);
+        String resp = "";
+        for (String ced : ceds) {
+            resp += "\n" + ced;
+        }
+        JOptionPane.showMessageDialog(null, "Las cédulas de los empleados que ingresó son: "+resp);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        int num = Integer.parseInt(JOptionPane.showInputDialog(null, "¿Cuántos empleados desea ingresar?"));
+        Empleado[] emps = new Empleado[num];
+        for (int i = 0;i < num; i++){
+            String cedula = JOptionPane.showInputDialog(null, "¿Cuál es la cedula del empleado " +(i+1)+"?");
+            double sueldoBruto = Double.parseDouble(JOptionPane.showInputDialog(null, "¿Cuál es el sueldo en bruto del empleado " +(i+1)+"?"));
+            Empleado emp = new Empleado(cedula, sueldoBruto);
+            emps[i] = emp;
+        }
+        Empleado emp = nomina.empleadoGanaMenos(emps);
+        JOptionPane.showMessageDialog(null, "El empleado que gana menos es el de la cedula: "+emp.getIdEmpleado());
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
